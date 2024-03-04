@@ -6,7 +6,7 @@ import {z} from 'zod'
 
 const prisma = new PrismaClient()
 
-export async function createMessage(prevState:{message: string}, formData: FormData){
+export async function createMessage(prevState:{message: string, success: boolean}, formData: FormData){
     const schema = z.object({
         name: z.string().min(3),
         surname: z.string(),
@@ -24,7 +24,7 @@ export async function createMessage(prevState:{message: string}, formData: FormD
     })
 
     if(!parse.success){
-        return { message: "Failed to send message"}
+        return { message: "Failed to send message", success: false}
     }
 
     const {name, surname, mail, phone, message} = parse.data
@@ -41,12 +41,14 @@ export async function createMessage(prevState:{message: string}, formData: FormD
         })
         revalidatePath('/')
         return {
-            message: "Message sent"
+            message: "Message sent",
+            success: true
         }
     }
     catch(e){
         return {
-            message: "Failed to send message"
+            message: "Failed to send message",
+            success: false
         }
     }
 }

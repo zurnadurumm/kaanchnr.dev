@@ -18,7 +18,7 @@ const Header = () => {
                 </Link>
   
             </div>
-            <div className='flex gap-12 font-semibold'>
+            <div className='flex gap-2.5 lg:gap-12 font-semibold'>
                 <Link href={'/'} className='transition-all text-Text hover:text-transparent hover:bg-gradient-to-r hover:from-Primary hover:to-Accent bg-Text bg-clip-text'>Home</Link>
                 <Link className='transition-all text-Text hover:text-transparent hover:bg-gradient-to-r hover:from-Primary hover:to-Accent bg-Text bg-clip-text' href={'/contact'}>Contact</Link>
                 <Link className='transition-all text-Text hover:text-transparent hover:bg-gradient-to-r hover:from-Primary hover:to-Accent bg-Text bg-clip-text' href={'/blog'}>Blog</Link>
